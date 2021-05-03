@@ -54,7 +54,7 @@ const categories = [
   { id: "2", name: "Educación" },
   { id: "3", name: "Trabajo" },
   { id: "4", name: "Comida" },
-  { id: "4", name: "Deporte" },
+  { id: "5", name: "Deporte" },
 ];
 
 let operations = [];
