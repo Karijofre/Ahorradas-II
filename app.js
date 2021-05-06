@@ -1,6 +1,9 @@
 //*******DOM******** */
 
 const options = document.getElementsByClassName("navbar-item");
+const hidingFilters = document.getElementById("hiding-filters");
+const showFilters = document.getElementById("show-filters");
+const filtersBox = document.getElementById("filters-box");
 const sections = document.getElementsByTagName("section");
 const categoryNew = document.getElementById("category-new");
 const categoriesEdit = document.getElementById("edit-categories");
@@ -26,6 +29,21 @@ const reportResumen = document.getElementById("resume-report");
 
 
 //******EVENTS****** */
+
+hidingFilters.addEventListener ("click", () => {
+  filtersBox.style.visibility = "hidden";
+  showFilters.style.visibility = "visible"; 
+  hidingFilters.style.visibility = "hidden";
+});
+
+showFilters.addEventListener ("click", () => {
+  filtersBox.style.visibility = "visible";
+  showFilters.style.visibility = "hidden";
+  hidingFilters.style.visibility = "visible";
+});
+
+
+
 
 console.log(sections, "Objecto");
 const sectionsList = [...sections];
