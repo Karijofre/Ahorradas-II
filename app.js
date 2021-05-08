@@ -4,6 +4,10 @@ const options = document.getElementsByClassName("navbar-item");
 const hidingFilters = document.getElementById("hiding-filters");
 const showFilters = document.getElementById("show-filters");
 const filtersBox = document.getElementById("filters-box");
+//const filterType = document.getElementById("filter-type");
+const categoryFilter = document.getElementById("category-filter");
+const dayFilter = document.getElementById("day-filter");
+const orderFor = document.getElementById("order-for");
 const sections = document.getElementsByTagName("section");
 const categoryNew = document.getElementById("category-new");
 const categoriesEdit = document.getElementById("edit-categories");
@@ -241,6 +245,83 @@ const confirmEditOperation = () => {
 const cancel = () => {
   views("home");
 };
+
+
+
+// Stand by:
+//Filtros de Tipo y Categoría
+
+/* let newData = [...operations]
+
+const filterType = (e) =>{
+    let atribute = ""
+    if (e.target.id == "filter-type") {
+        newData = [...operation]
+        categoryFilter.value = "Todas"
+      atribute = "tipo"  
+    }else{
+       typeBalance.value = "Todas"
+       atribute = "categoria" 
+    }
+    newData = newData.filter(operations => operations[atribute] === e.target.value)
+    e.target.value === "Todas" ? seeNewOperation(operation) : seeNewOperation(newData)
+}
+
+
+typeBalance.addEventListener("change", (e) =>{filterType(e)})
+categoryFilter.addEventListener("change", (e) =>{filterType(e)})  */
+
+
+
+//Filtros Desde
+
+
+//Para que muestre la fecha de hoy al iniciar
+/* const day = new Date().getDate();
+let month = new Date().getMonth() + 1;
+const year = new Date().getFullYear(); */
+
+
+//dayFilter.value = `${year}-${month < 10 ? "0" + month: month}-${day < 10 ? "0" + day: day}`;
+
+//Filtra la categoría por fecha
+
+/* filterFrom.addEventListener("change", (e)=>{
+  const result = operation.filter(operations => operations.fecha === e.target.value )
+  seeNewOperation(result)
+}) */
+
+
+
+//Filtra la categoría por orden a seleccionar
+
+/* orderFor.addEventListener("change", ()=>{
+  console.log(orderFor.value)
+  let newOrder = [...operation]
+  if (orderFor.value === "a-z") {
+      newOrder.sort((a,b)=> a.descripcion > b.descripcion ? 1 : -1)
+  }
+  if (orderFor.value === "z-a") {
+      newOrder.sort((a,b)=> a.descripcion < b.descripcion ? 1 : -1)
+  }
+  if (orderFor.value === "more-recent") {
+      newOrder.sort((a,b)=> a.fecha < b.fecha ? 1 : -1)
+  }
+  if (orderFor.value === "less-recent") {
+      newOrder.sort((a,b)=> a.fecha > b.fecha ? 1 : -1)
+  }
+  if (orderFor.value === "big-amount") {
+      newOrder.sort((a,b)=> a.monto < b.monto ? 1 : -1)
+  }
+  if (orderFor.value === "less-amount") {
+      newOrder.sort((a,b)=> a.monto > b.monto ? 1 : -1)
+  }
+  seeNewOperation(newOrder)
+}) */
+//Fin de Stand by
+
+
+//fin de tipo y categoría
 
 //reports
 makeReport = () => {

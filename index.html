@@ -80,7 +80,8 @@
                   <label class="label">Tipo</label>
                   <div class="control">
                     <div class="select is-fullwidth">
-                      <select>
+                      <select id="filter-type">
+                        <option>Todos</option>
                         <option>Gasto</option>
                         <option>Ganancia</option>
                       </select>
@@ -92,7 +93,7 @@
                   <label class="label">Categoría</label>
                   <div class="control">
                     <div class="select is-fullwidth">
-                      <select>
+                      <select id="category-filter">
                         <option class="category-style" value="Todas">Todas</option>
                         <option value="Comida">Comida</option>
                         <option value="Servicios">Servicios</option>
@@ -109,7 +110,7 @@
                 <div class="field">
                   <label class="label">Desde</label>
                   <div class="control">
-                    <input class="input" type="date" />
+                    <input id="day-filter" class="input" type="date" />
                   </div>
                 </div>
 
@@ -117,7 +118,7 @@
                   <label class="label">Ordenar por</label>
                   <div class="control">
                     <div class="select is-fullwidth">
-                      <select>
+                      <select id="order-for">
                         <option>Más reciente</option>
                         <option>Menos reciente</option>
                         <option>Mayor monto</option>
