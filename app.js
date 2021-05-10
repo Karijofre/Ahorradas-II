@@ -5,8 +5,10 @@ const hidingFilters = document.getElementById("hiding-filters");
 const showFilters = document.getElementById("show-filters");
 const filtersBox = document.getElementById("filters-box");
 //const filterType = document.getElementById("filter-type");
+const typeBalance = document.getElementById("type-balance");
 const categoryFilter = document.getElementById("category-filter");
 const dayFilter = document.getElementById("day-filter");
+const dateFilter = document.getElementById("date-filter");
 const orderFor = document.getElementById("order-for");
 const sections = document.getElementsByTagName("section");
 const categoryNew = document.getElementById("category-new");
@@ -49,7 +51,7 @@ showFilters.addEventListener ("click", () => {
 
 
 
-console.log(sections, "Objecto");
+//console.log(sections, "Objecto");
 const sectionsList = [...sections];
 
 const views = (page) => {
@@ -60,11 +62,11 @@ const views = (page) => {
       section.classList.add("is-hidden");
     }
   });
-  console.log(sectionsList);
+  //console.log(sectionsList);
 };
 
 
-const generateId = () => {
+ const generateId = () => {
   let p1 = Math.floor(Math.random() * 0x10000).toString(16);
   let p2 = new Date().getTime();
   return `${p1}${p2}`;
@@ -248,28 +250,28 @@ const cancel = () => {
 
 
 
-// Stand by:
-//Filtros de Tipo y Categoría
 
-/* let newData = [...operations]
+//Filtros de Tipo y Categoría (no funciona- lo comento para que vuelva a funcionar reporte y el input de Tipo en Nueva Operación)
+
+ /* let newData = [...operations]
 
 const filterType = (e) =>{
     let atribute = ""
     if (e.target.id == "filter-type") {
-        newData = [...operation]
+        newData = [...operations]
         categoryFilter.value = "Todas"
       atribute = "tipo"  
     }else{
        typeBalance.value = "Todas"
        atribute = "categoria" 
     }
-    newData = newData.filter(operations => operations[atribute] === e.target.value)
-    e.target.value === "Todas" ? seeNewOperation(operation) : seeNewOperation(newData)
+    newData = newData.filter(operation => operation[atribute] === e.target.value)
+    e.target.value === "Todas" ? myOperationsList(operations) : myOperationsList(newData)
 }
 
 
 typeBalance.addEventListener("change", (e) =>{filterType(e)})
-categoryFilter.addEventListener("change", (e) =>{filterType(e)})  */
+categoryFilter.addEventListener("change", (e) =>{filterType(e)}) */
 
 
 
@@ -277,33 +279,32 @@ categoryFilter.addEventListener("change", (e) =>{filterType(e)})  */
 
 
 //Para que muestre la fecha de hoy al iniciar
-/* const day = new Date().getDate();
+let day = new Date().getDate();
 let month = new Date().getMonth() + 1;
-const year = new Date().getFullYear(); */
+let year = new Date().getFullYear(); 
+
+//Input Desde del home
+dayFilter.value = `${year}-${month < 10 ? "0" + month: month}-${day < 10 ? "0" + day: day}`;
 
 
-//dayFilter.value = `${year}-${month < 10 ? "0" + month: month}-${day < 10 ? "0" + day: day}`;
+//Input fecha de +Nueva operación no funciona aún
+dateFilter.value = `${year}-${month < 10 ? "0" + month: month}-${day < 10 ? "0" + day: day}`;
 
-//Filtra la categoría por fecha
+//Filtra la categoría por fecha(no jala)
 
-/* filterFrom.addEventListener("change", (e)=>{
-  const result = operation.filter(operations => operations.fecha === e.target.value )
-  seeNewOperation(result)
-}) */
+ dayFilter.addEventListener("change", (e)=>{
+  const result = operations.filter(operation => operation.Fecha === e.target.value )
+  myOperationsList(result)
+})
 
 
 
-//Filtra la categoría por orden a seleccionar
+//Filtra la categoría por orden a seleccionar(no jala)
 
-/* orderFor.addEventListener("change", ()=>{
-  console.log(orderFor.value)
-  let newOrder = [...operation]
-  if (orderFor.value === "a-z") {
-      newOrder.sort((a,b)=> a.descripcion > b.descripcion ? 1 : -1)
-  }
-  if (orderFor.value === "z-a") {
-      newOrder.sort((a,b)=> a.descripcion < b.descripcion ? 1 : -1)
-  }
+ orderFor.addEventListener("change", ()=>{
+  //console.log(orderFor.value)
+  let newOrder = [...operations]
+  
   if (orderFor.value === "more-recent") {
       newOrder.sort((a,b)=> a.fecha < b.fecha ? 1 : -1)
   }
@@ -316,8 +317,14 @@ const year = new Date().getFullYear(); */
   if (orderFor.value === "less-amount") {
       newOrder.sort((a,b)=> a.monto > b.monto ? 1 : -1)
   }
-  seeNewOperation(newOrder)
-}) */
+  if (orderFor.value === "a-z") {
+    newOrder.sort((a,b)=> a.descripcion > b.descripcion ? 1 : -1)
+}
+if (orderFor.value === "z-a") {
+    newOrder.sort((a,b)=> a.descripcion < b.descripcion ? 1 : -1)
+}
+  myOperationsList(newOrder)
+}) 
 //Fin de Stand by
 
 

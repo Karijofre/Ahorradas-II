@@ -108,7 +108,7 @@
                 </div>
 
                 <div class="field">
-                  <label class="label">Desde</label>
+                  <label for="fecha" class="label">Desde</label>
                   <div class="control">
                     <input id="day-filter" class="input" type="date" />
                   </div>
@@ -119,12 +119,12 @@
                   <div class="control">
                     <div class="select is-fullwidth">
                       <select id="order-for">
-                        <option>Más reciente</option>
-                        <option>Menos reciente</option>
-                        <option>Mayor monto</option>
-                        <option>Menor monto</option>
-                        <option>A/Z</option>
-                        <option>Z/A</option>
+                        <option value="more-recent">Más reciente</option>
+                        <option value="less-recent">Menos reciente</option>
+                        <option value="big-amount">Mayor monto</option>
+                        <option value="less-amount">Menor monto</option>
+                        <option value="a-z">A/Z</option>
+                        <option value="z-a">Z/A</option>
                       </select>
                     </div>
                   </div>
@@ -141,8 +141,7 @@
                 <div class="column">
                   <button
                     class="button is-info"
-                    onclick="seeNewOperation()"
-                  >
+                    onclick="seeNewOperation()">
                     <i class="fas fa-plus mr-1 is-small"></i>Nueva Operación
                   </button>
                 </div>
@@ -193,7 +192,8 @@
             <label class="label">Tipo</label>
             <div class="control">
               <div class="select is-fullwidth">
-                <select data-owner="operationnew" name="type">
+                <select data-owner="operationnew" name="type" id="type-balance">
+                  <option value="Todos">Todos</option>
                   <option value="Ganancia">Ganancia</option>
                   <option value="Gasto">Gasto</option>
                 </select>
@@ -218,6 +218,7 @@
             <label class="label">Fecha</label>
             <div class="control">
               <input
+                id="date-filter"
                 class="input"
                 type="date"
                 data-owner="operationnew"
