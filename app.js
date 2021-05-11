@@ -17,6 +17,9 @@ const categoriesForm = document.getElementById("categories-form");
 const newInputCategory = document.getElementById("new-input-category");
 const balanceButton = document.getElementById("balance-button");
 const balanceSection = document.getElementById("balance-section");
+const balanceGain = document.getElementById("balance-gain");
+const balanceSpend = document.getElementById("balance-spend");
+const balanceAll = document.getElementById("balance-all");
 const formElementsNewOperation = document.querySelectorAll(
   "#operationnew input[data-owner], #operationnew select[data-owner]"
 );
@@ -325,7 +328,8 @@ if (orderFor.value === "z-a") {
 }
   myOperationsList(newOrder)
 }) 
-//Fin de Stand by
+
+
 
 
 //fin de tipo y categoría
@@ -414,6 +418,59 @@ paintReports = () => {
     reportResumen.appendChild(frame);
   });
 };
+
+//Caja de balance del home
+
+//prueba balance no jala aún
+
+const balanceBox = (operations) => {
+  return operations.reduce(
+    (balance, operacion) => {
+      if (operacion.tipo === "Ganancia") {
+        return {
+          ...balance,
+          ganancia: Number(balance.ganancia) + Number(operacion.monto),
+          total: Number(balance.total) + Number(operacion.monto),
+        };
+      }
+
+      if (operacion.tipo === "Gasto") {
+        return {
+          ...balance,
+          gasto: Number(balance.gasto) + Number(operacion.monto),
+          total: Number(balance.total) + Number(operacion.monto),
+        };
+      }
+    },
+    {
+      ganancia: 0,
+      gasto: 0,
+      total: 0,
+    }
+  );
+};
+
+// Impresión del balance
+
+const balancePrint = (operations) => {
+  const balanceObject = balanceBox(operations);
+
+  balanceAll.classList.remove("column blue-cero", "column red-cero");
+
+  if (balanceObject.total > 0) {
+    balanceAll.classList.add("column red-cero");
+  }
+  if (balanceObject.total < 0) {
+    balanceAll.classList.add("column blue-cero");
+  }
+
+  balanceGain.innerHTML = `$${balanceObject["ganancia"]}`;
+  balanceSpend.innerHTML = `$${balanceObject["gasto"]}`;
+  balanceAll.innerHTML = `$${balanceObject["total"]}`;
+};
+
+
+//fin prueba balance
 
 //Local Storage
 const addLocalStorage = (property, value) => {
